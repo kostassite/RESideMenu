@@ -733,6 +733,11 @@
 {
     if (!_leftMenuViewController) {
         _leftMenuViewController = leftMenuViewController;
+        [self addChildViewController:self.leftMenuViewController];
+        self.leftMenuViewController.view.frame = self.view.bounds;
+        self.leftMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.menuViewContainer addSubview:self.leftMenuViewController.view];
+        [self.leftMenuViewController didMoveToParentViewController:self];
         return;
     }
     [self hideViewController:_leftMenuViewController];
@@ -752,6 +757,11 @@
 {
     if (!_rightMenuViewController) {
         _rightMenuViewController = rightMenuViewController;
+        [self addChildViewController:self.rightMenuViewController];
+        self.rightMenuViewController.view.frame = self.view.bounds;
+        self.rightMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.menuViewContainer addSubview:self.rightMenuViewController.view];
+        [self.rightMenuViewController didMoveToParentViewController:self];
         return;
     }
     [self hideViewController:_rightMenuViewController];
